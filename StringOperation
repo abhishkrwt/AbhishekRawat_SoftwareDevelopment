@@ -1,0 +1,56 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+   int t;
+   cin>>t;
+   
+   while(t--){
+       
+       string s;
+       cin>>s;
+       
+       map<char,int> m;
+       
+       for(int i=0; i<s.size(); i++){
+           m[s[i]]++;
+       }
+       
+       vector<string> ans;
+       vector<int> ansi;
+       
+       vector<string> v={"zero","one","two","three","four","five","six","seven","eight","nine"};
+       
+       
+       
+       for(int i=0; i<v.size();){
+        
+               
+               bool flag=true;
+               
+               for(int j=0; j<v[i].size(); j++){
+                   
+                   if(m[v[i][j]]<=0) flag=false;
+                 
+               }
+               
+               if(flag){
+                   ans.push_back(v[i]);
+                   ansi.push_back(i);
+                   for(int j=0; j<v[i].size(); j++) m[v[i][j]]--;
+                     }else{
+                   i++;
+               }
+           
+       }
+       
+       for(int i=0; i<ansi.size(); i++) cout<<ansi[i];
+       
+       
+       cout<<endl;
+   }
+
+    return 0;
+}
